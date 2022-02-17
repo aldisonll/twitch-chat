@@ -57,7 +57,7 @@ class UI {
 
         const msg = document.createElement('span')
         msg.innerHTML = ': ' + this.pushEmotes(this.emoteParser(emotes), this.message(usertype))
-        this.message(usertype)?.includes(`@${this.broadcaster}`) ? div.style.background = '#a95d27' : ''
+        this.message(usertype)?.toLowerCase().includes(`@${this.broadcaster}`) ? div.style.background = '#a95d27' : ''
         msg.setAttribute('msg', '')
         
         
@@ -110,7 +110,7 @@ class TWITCH_WS {
     constructor(server, username){
         this.server   = server
         this.username = username
-        this._socket = null
+        this._socket  = null
         this.anonymouse_user = `justinfan${Math.floor(Math.random() * 10000)}`
     }
     ws_commands() { 
