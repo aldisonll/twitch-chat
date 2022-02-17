@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,300;1,400');
+:root {
+    --color-background: #333;
+    --color-logo: #772ce8;
+    --color-title: white;
+    --color-chat-header-title: white;
+    --color-chat-mouseover: rgb(82, 82, 82);
+    --color-chat: #181818;
+
+    --size-logo: 100px;
+    --size-chat-header-title: 20px;
+
+    --font-chat-header-title: 400;
+
+    --transition-title: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+    --image-moderator: url('https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/1');
+    --image-broadcaster: url('https://static-cdn.jtvnw.net/badges/v1/5527c58c-fb7d-422d-b71b-f309dcb85cc1/1');
+}
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: var(--color-background);
+}
+[chat-section]::-webkit-scrollbar {
+width: 5px;
+}
+[chat-section]::-webkit-scrollbar-track {
+background: #141414; 
+}
+[chat-section]::-webkit-scrollbar-thumb {
+background: rgb(41, 40, 40); 
+}
+[chat-section]::-webkit-scrollbar-thumb:hover {
+background: rgb(37, 31, 31); 
+}
+[header]{
+    display: flex;
+    justify-content: center;
+    place-items: center;
+}
+[logo] {
+    width: var(--size-logo);
+}
+[title] {
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-title);
+    letter-spacing: 7px;
+    padding: 12px;
+    border: 2px solid black;
+    box-shadow: 4px 4px 0px black;
+    background-color: 772ce8;
+    transition: var(--transition-title);
+}
+[title]:hover {
+    transform: scale(1.1);
+}
+[chat-container] {
+    font-family: 'Montserrat', sans-serif;
+    min-width: 300px;
+    max-width: 700px;
+    display: flex;
+    height: 400px;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--color-chat);
+    flex-direction: column;
+    border-radius: 6px;
+    margin-top: 3em;
+    transition: var(--transition-title);
+}
+[chat-header-title] > [username] {
+    font-weight: var(--font-chat-header-title);
+    color: var(--color-chat-header-title);
+    font-size: var(--size-chat-header-title);
+}
+[chat-header] {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #2d2d2d;
+}
+[chat-section] {
+    overflow: auto;
+    margin: 4px;
+    overflow-x: hidden;
+}
+[chat] {
+    color: white;
+    align-items: center;
+    padding: 0px 0px 10px;
+    border-radius: 5px;
+    transition: all 0.2s cubic-bezier(0, 1.15, 0.45, 0.86);
+    cursor: pointer;
+}
+[chat]:hover {
+    background: var(--color-chat-mouseover);
+}
+[chat-section] > [chat-section] > [chat] > [username] {
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+[chat-container] >  [chat-header] > [chat-header-title] > [username-inp] {
+    background: var(--color-chat);
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    padding: 4px;
+}
+[chat-container] >  [chat-header] > [chat-header-title] {
+    display: flex;
+}
+[chat-container] >  [chat-header] > [chat-header-title] > [username-inp]:focus {
+    background: #272626;
+}
+[chat-container] >  [chat-header] > [chat-header-title] > [username-inp]:hover {
+    background: #292828;
+}
+[chat-container] >  [chat-header] > [chat-header-title] > [change-username] {
+    visibility: hidden;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    margin-left: 0.5em;
+    background: #7b33e8;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 0;
+    top: 0px;
+    left: calc(100% - 50px);
+    transition: visibility 2s ease-out;
+}
+[chat-container] >  [chat-header] > [chat-header-title] > [change-username]:active {
+    transform: scale(1.1);
+}
+[chat-container] >  [chat-header] > [chat-header-title] > [username-inp]:focus 
+~ [change-username] {
+    visibility: visible;
+}
+[chat-section] > [chat-section] > [chat] > [ismod="1"]::before {
+    content: var(--image-moderator);
+    position: relative;
+    top: 4px;
+}
+[chat-section] > [chat-section] > [chat] > [isBroadcaster="1"]::before {
+    content: var(--image-broadcaster);
+    position: relative;
+    top: 4px;
+}
