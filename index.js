@@ -40,14 +40,14 @@ class UI {
           }).observe(this.chatSection)
     }
     createChatComponent(data) {
-        const { color, displayname, userid, usertype, emotes, badges } = data
+        const { color, displayname, userid, usertype, emotes, badges, systemmsg } = data
         
         const div = document.createElement('div')
         div.setAttribute('userId', userid)
         div.setAttribute('chat', '')
 
         const username = document.createElement('a')
-        username.textContent = displayname
+        username.textContent = displayname || systemmsg
         username.style.color = color || 'white'
         username.setAttribute('username', '')
         username.setAttribute('isMod', badges?.includes("moderator") ? '1' : '0')
@@ -110,7 +110,7 @@ class TWITCH_WS {
     constructor(server, username){
         this.server   = server
         this.username = username
-        this._socket  = null
+        this._socket = null
         this.anonymouse_user = `justinfan${Math.floor(Math.random() * 10000)}`
     }
     ws_commands() { 
@@ -165,7 +165,7 @@ class TWITCH_WS {
     }
     parse_data(data) {
         var finalData = 
-        this._getInfo(data, ["color", "display-name", "user-id", "user-type", "emotes", "badges"])
+        this._getInfo(data, ["color", "display-name", "user-id", "user-type", "emotes", "badges", "system-msg"])
         return { ...finalData }
     }
     isChatMsg(data) {
