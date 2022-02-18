@@ -1,5 +1,5 @@
 # twitch-chat
-### Recreatation of twitch chat using their websocket -- without using any third party library
+### Recreation of twitch chat using their websocket -- without using any third party library
 
 ### things that I added
 - show mods 
