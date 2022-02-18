@@ -58,6 +58,7 @@ class UI {
         const msg = document.createElement('span')
         msg.innerHTML = ': ' + this.pushEmotes(this.emoteParser(emotes), this.message(usertype))
         this.message(usertype)?.toLowerCase().includes(`@${this.broadcaster}`) ? div.style.background = '#a95d27' : ''
+
         msg.setAttribute('msg', '')
         
         
